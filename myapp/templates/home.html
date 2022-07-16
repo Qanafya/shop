@@ -1,0 +1,243 @@
+{% load static %}
+{% load poll_extras %} src="{% static 'img/asd.pmg'%}"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="header">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+   
+<div class="container">
+    <div class="navbar">
+        <div class="logo">
+            <a href="http://localhost:8000/home" class="shop">Duken</a>
+        </div>
+        <nav>
+            <ul id="MenuItems">
+                <li><a href="http://localhost:8000/home">Home</a></li>
+              <li><a href="http://localhost:8000/products">Products</a></li>
+              <li><a href="http://localhost:8000/account">Account</a></li>
+              <li><a href="http://localhost:8000/about">Admins</a></li>
+              <li><a href="http://localhost:8000/support">Support</a></li>
+            </ul>
+        </nav>
+       <a href="http://localhost:8000/cart"> <img src="{%  static 'img/cart.png' %}" width="30px" height="30px"> </a>
+       <img src="{% static 'img/menu.png'%}" class="menu-icon" onclick="menutoggle()">
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <h1>Музыкалық аспаптар <br> Өте жоғары сапада</h1>
+            <p> Егерде сен музыкалық аспаптарға қызықсаң, онда біздің<br>  онлайн DUKEN-нен қалаған аспабыңды сатып ала аласың </p>
+            <a href="http://localhost:8000/products" class="btn">Explore Now &#8594;</a>
+        </div>
+        <div class="col-2">
+            <img src="{%  static 'img/hom.jpg' %}">
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="categories">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <img src="{%  static 'img/cat-1.jpg' %}">
+            </div>
+            <div class="col-3">
+                <img src="{%  static 'img/cat-2.jpg' %}">
+            </div>
+            <div class="col-3">
+                <img src="{%  static 'img/cat-3.jpg' %}">
+            </div>
+        </div>
+    </div>
+  
+</div>
+<div class="small-container">
+    <h2 class="title">Featured Products</h2>
+    <div class="row">
+        {% for q in products %}
+        {% if q.id < 5 %}
+        <div class="col-4">
+               <a href="http://localhost:8000/details/{{q.id}}"> <img src="{{ q.foto }}"> </a>
+               <a href="http://localhost:8000/details/{{q.id}}"> <h4>{{ q.name }}</h4> </a>
+                <div class="rating">
+                    {% if 5 == q.star%}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    {% elif 4 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% elif 3 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% elif 2 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% elif 1 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% elif 0 == q.star %}
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% endif %}
+                </div>
+                <div class="katar">
+                    <p class="valu">$</p><p class="cost">{{ q.price }}</p>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <h2 class="title">Latest Products</h2>
+    <div class="row">
+        {% for q in products %}
+        <div class="col-4">
+               <a href="http://localhost:8000/details/{{q.id}}"> <img src="{{ q.foto }}"> </a>
+               <a href="http://localhost:8000/details/{{q.id}}"> <h4>{{ q.name }}</h4> </a>
+                <div class="rating">
+                    {% if 5 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    {% elif 4 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% elif 3 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% elif 2 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% elif 1 == q.star %}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% elif 0 == q.star %}
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    {% endif %}
+                </div>
+                <div class="katar">
+                    <p class="valu">$</p><p class="cost">{{ q.price }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+    <div class="offer">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="{%  static 'img/altyn.png' %}" class="offer-img">
+                </div>
+                <div class="col-2">
+                    <p>Exclusive Available on only Duken</p>
+                    <h1>Алтын домбыра</h1>
+                    <small>100% пайыз алтыннан құйылған домбыра. Тек қана біздің DUKEN-де сатылады.
+                        2021 жылы ұйымдастырылған "Алтын Домбыра" айтыс байқауы үшін арнайы жасалған.
+                        Қазіргі уақытта DUKEN-де сатылымда.
+                    </small>
+                    <a href="http://localhost:8000/products" class="btn">Buy Now &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% show_categories %}
+    <div class="brands">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-5">
+                    <img src="{%  static 'img/logo-sulpak.png' %}">
+                </div>
+                <div class="col-5">
+                    <img src="{%  static 'img/logo-alser.png' %}">
+                </div>
+                <div class="col-5">
+                    <img src="{%  static 'img/logo-technodom.png' %}">
+                </div>
+                <div class="col-5">
+                    <img src="{%  static 'img/logo-kaspi.png' %}">
+                </div>
+                <div class="col-5">
+                    <img src="{%  static 'img/logo-mechta.png' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="social_icon">
+            <li><a href=""><ion-icon name="logo-facebook"></ion-icon></a></li>
+            <li><a href=""><ion-icon name="logo-tiktok"></ion-icon></a></li>
+            <li><a href=""><ion-icon name="logo-instagram"></ion-icon></a></li>
+            <li><a href=""><ion-icon name="logo-twitter"></ion-icon></a></li>
+            <li><a href=""><ion-icon name="logo-github"></ion-icon></a></li>
+        </ul>
+        <ul class="menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Account</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Cart</a></li>
+        </ul>
+        <p>We are celling this site | All Rights Reserved</p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+</body>
+</html>
