@@ -18,7 +18,3 @@ class BasicTest(TestCase):
     def test_cart(self):
         response = self.client.get('/cart/')
         self.assertEqual(response.status_code, 200)
-
-    def test_admins(self):
-        response = self.client.get('/support/')
-        self.assertEqual(response.status_code, 200)
