@@ -10,8 +10,9 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 def about(request):
-    admins = Admins.objects.all()
-    return render(request, 'about.html', {'admins':admins})
+    admin = Admins.objects.all()
+    products = Products.objects.all()
+    return render(request, 'home.html', {'products':products, 'admin':admin})
 
 def account(request):
     return render(request, 'account.html')
